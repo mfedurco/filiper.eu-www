@@ -8,9 +8,9 @@
 </head>
 <body>
   <header>
-    <a class="brand" href="/">filiper.eu</a>
+    <a class="brand" href="/"><b>filiper</b><span>.eu</span></a>
     <nav>
-      <a href="/">Úvod</a>
+      <a class="active" href="/" aria-current="page">Úvod</a>
       <a href="/pravidla.html">Pravidlá</a>
       <a href="/pripojenie.html">Ako sa pripojiť</a>
       <a href="https://vyprava.filiper.eu">Výprava</a>
@@ -18,15 +18,93 @@
     </nav>
   </header>
   <main>
-    <section class="card">
-      <p class="kicker">Aktuálna výprava</p>
-      <h1>Cesta Preživších</h1>
-      <p>Krátky výber úloh sa sem načíta z portálu výpravy.</p>
-    </section>
-    <section class="card">
-      <p class="kicker">Rebríček</p>
-      <p>Poradie hráčov sa sem načíta z portálu výpravy.</p>
-    </section>
+    <h1>Školský survival server</h1>
+    <div class="grid">
+      <section class="card">
+        <div class="card-top">
+          <p class="kicker">Aktuálna výprava</p>
+          <p class="live"><i class="dot" aria-hidden="true"></i>naživo</p>
+        </div>
+        <div id="expedition-body" aria-live="polite">
+          <p class="fallback">Výpravu sa teraz nepodarilo načítať.</p>
+        </div>
+      </section>
+      <section class="card">
+        <div class="card-top">
+          <p class="kicker">Rebríček</p>
+          <p class="live"><i class="dot" aria-hidden="true"></i>naživo</p>
+        </div>
+        <div id="board-body" aria-live="polite">
+          <p class="fallback">Rebríček sa teraz nepodarilo načítať.</p>
+        </div>
+      </section>
+    </div>
+    <p class="note">Toto je triedny survival server. Staviate spolu, zbierate suroviny a občas sa vydáte na výpravu. Pred pripojením si prečítajte <a href="/pravidla.html">pravidlá</a>.</p>
   </main>
+  <script>
+    (function () {
+      var SERVER_ID = "test";
+      var expeditionBody = document.getElementById("expedition-body");
+      var boardBody = document.getElementById("board-body");
+
+      function el(tag, className, text) {
+        var node = document.createElement(tag);
+        if (className) node.className = className;
+        if (text != null) node.textContent = text;
+        return node;
+      }
+
+      function showFallback() {
+        expeditionBody.replaceChildren(el("p", "fallback", "Výpravu sa teraz nepodarilo načítať."));
+        boardBody.replaceChildren(el("p", "fallback", "Rebríček sa teraz nepodarilo načítať."));
+      }
+
+      function render(data) {
+        var expedition = data && data.expedition;
+        expeditionBody.replaceChildren();
+        if (!expedition || typeof expedition.name !== "string" || !expedition.name) {
+          expeditionBody.append(el("p", "fallback", "Na serveri test teraz nie je otvorená výprava."));
+        } else {
+          expeditionBody.append(el("h2", "", expedition.name));
+          expeditionBody.append(el("p", "pill", "server " + SERVER_ID));
+          if (typeof expedition.blurb === "string" && expedition.blurb) {
+            expeditionBody.append(el("p", "blurb", expedition.blurb));
+          }
+          var quests = Array.isArray(expedition.quests) ? expedition.quests.slice(0, 5) : [];
+          if (!quests.length) {
+            expeditionBody.append(el("p", "fallback", "Táto výprava zatiaľ nemá úlohy."));
+          } else {
+            quests.forEach(function (quest) {
+              var row = el("div", "quest");
+              row.append(el("span", "", quest && quest.name ? String(quest.name) : "Úloha"));
+              expeditionBody.append(row);
+            });
+          }
+        }
+
+        var list = el("ol", "rows");
+        var board = Array.isArray(data && data.leaderboard) ? data.leaderboard : [];
+        var rank = 0;
+        board.forEach(function (entry) {
+          if (!entry || typeof entry.player !== "string" || !entry.player) return;
+          rank += 1;
+          var row = el("li", rank === 1 ? "row top" : "row");
+          row.append(el("span", "rank", String(rank)));
+          row.append(el("span", "name", entry.player));
+          var points = entry.points;
+          row.append(el("span", "score", points == null || points === "" ? "0" : String(points)));
+          list.append(row);
+        });
+        boardBody.replaceChildren(list.childElementCount ? list : el("p", "fallback", "Rebríček je zatiaľ prázdny."));
+      }
+
+      fetch("https://vyprava.filiper.eu/api/public/" + SERVER_ID, {
+        headers: { Accept: "application/json" }
+      }).then(function (res) {
+        if (!res.ok) throw new Error("failed");
+        return res.json();
+      }).then(render).catch(showFallback);
+    })();
+  </script>
 </body>
 </html>
