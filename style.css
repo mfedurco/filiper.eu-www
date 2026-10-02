@@ -77,6 +77,31 @@ h1, h2 {
   color: #f4f8f5;
 }
 h1 { margin: 0 0 1.75rem; font-size: clamp(2rem, 4vw, 2.5rem); }
+.hero {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 8 / 3;
+  object-fit: cover;
+  margin: 0 0 1.5rem;
+  border-radius: 18px;
+  border: 1px solid rgba(215, 235, 225, 0.14);
+}
+main.sheet {
+  background: #e7efe9;
+  color: #1c2822;
+  border-radius: 22px;
+  padding: 2.3rem 2.1rem 2.5rem;
+  margin-top: 1.6rem;
+  margin-bottom: 2.4rem;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+main.sheet h1,
+main.sheet h2 { color: #14201b; }
+main.sheet p,
+main.sheet li,
+main.sheet ul { color: #24312b; }
+main.sheet a { color: #2f6b4a; }
 h2 { margin: 0 0 0.65rem; font-size: 1.85rem; }
 .grid { display: grid; gap: 1.25rem; }
 .card {
