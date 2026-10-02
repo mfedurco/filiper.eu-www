@@ -8,6 +8,7 @@
     </linearGradient>
   </defs>
   <rect width="1600" height="600" fill="url(#dusk)"/>
+  <text x="96" y="286" fill="#f3d3a6" font-family="Nunito, Segoe UI, sans-serif" font-size="78" font-weight="700" letter-spacing="1.5">mc.filiper.eu</text>
   <circle cx="1120" cy="392" r="58" fill="#f3d3a6"/>
   <path fill="#4d675c" d="M0 470H160V430H300V450H460V390H620V430H800V370H980V420H1160V380H1340V430H1600V520H0Z"/>
   <path fill="#2b463c" d="M0 530H120V480H280V510H440V440H640V490H820V450H1020V500H1220V460H1420V500H1600V570H0Z"/>

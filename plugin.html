@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plugin · filiper.eu</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <a class="brand" href="/">filiper.eu</a>
+    <nav>
+      <a href="/">Úvod</a>
+      <a href="/pravidla.html">Pravidlá</a>
+      <a href="/pripojenie.html">Ako sa pripojiť</a>
+      <a href="https://vyprava.filiper.eu">Výprava</a>
+      <a class="active" href="/plugin" aria-current="page">Plugin</a>
+    </nav>
+  </header>
+  <main class="sheet">
+    <h1>Plugin</h1>
+    <p>filiper.eu-vyprava drží výpravu na jednom serveri. Každý server má vlastnú výpravu a vlastný postup hráčov.</p>
+    <p>V hre otvoríš truhlu. V nej je aktuálna výprava, úlohy, body a rebríček. Úlohy idú cez kampaň, denné, týždenné, dlhodobé, spoločné ciele a partiu.</p>
+    <p>Keď hráč úlohu dokončí, server to napíše do chatu: Úloha splnená, názov úlohy a koľko bodov pribudlo.</p>
+    <p>Ak portál chvíľu neodpovedá, postup ostane na serveri a odošle sa, keď je portál späť.</p>
+    <h2>Príkazy</h2>
+    <ul>
+      <li><code>/vyprava</code> Otvorí truhlu s aktuálnou výpravou.</li>
+      <li><code>/vyprava truhla</code> Tá istá truhla. Rovnako funguje <code>chest</code> a <code>menu</code>.</li>
+      <li><code>/vyprava help</code> Vypíše zoznam príkazov.</li>
+      <li><code>/vyprava kampan</code> Ukáže kapitolu kampane a postup jej úloh. Rovnako <code>campaign</code>.</li>
+      <li><code>/vyprava denne</code> Vypíše dnešné úlohy. Rovnako <code>daily</code>.</li>
+      <li><code>/vyprava tyzdenne</code> Vypíše úlohy tohto týždňa. Rovnako <code>weekly</code>.</li>
+      <li><code>/vyprava dlhodobe</code> Vypíše dlhodobé ciele sezóny. Rovnako <code>longterm</code> a <code>sezona</code>.</li>
+      <li><code>/vyprava spolocne</code> Ukáže spoločné ciele servera a kto koľko prispel. Rovnako <code>shared</code>.</li>
+      <li><code>/vyprava questy</code> Vypíše kampaň, denné, týždenné, dlhodobé aj spoločné naraz. Rovnako <code>quests</code>.</li>
+      <li><code>/vyprava top</code> Vypíše rebríček bodov. Rovnako <code>rebricek</code>.</li>
+      <li><code>/vyprava party</code> Ukáže tvoju partiu a jej úlohu.</li>
+      <li><code>/vyprava party create Názov</code> Založí partiu s týmto názvom.</li>
+      <li><code>/vyprava party invite Hráč</code> Pozve hráča, ktorý je online.</li>
+      <li><code>/vyprava party leave</code> Odídeš z partie.</li>
+      <li><code>/vyprava party quest</code> Znova ukáže úlohu partie. Rovnako <code>uloha</code>.</li>
+      <li><code>/vyprava reload</code> Znovu načíta výpravu. Len pre hráča s oprávnením vyprava.admin.</li>
+    </ul>
+  </main>
+</body>
+</html>
