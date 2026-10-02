@@ -1,15 +1,27 @@
-:root { color-scheme: light; }
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800&display=swap");
+
+:root { color-scheme: dark; }
 * { box-sizing: border-box; }
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: Inter, "Segoe UI", system-ui, sans-serif;
-  color: #1e2832;
-  background:
-    radial-gradient(900px 420px at 12% -10%, #e7f3ea 0%, transparent 60%),
-    radial-gradient(700px 380px at 100% 0%, #f7efe2 0%, transparent 55%),
-    #f3f0e8;
+  font-family: "Nunito", "Segoe UI", sans-serif;
+  font-size: 17px;
+  line-height: 1.5;
+  color: #e7eee9;
+  background: #121a17;
 }
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: url("/bg-outline.svg") center / cover no-repeat;
+  opacity: 0.16;
+}
+header,
+main { position: relative; z-index: 1; }
 header {
   min-height: 76px;
   display: flex;
@@ -18,17 +30,17 @@ header {
   gap: 1rem 1.5rem;
   flex-wrap: wrap;
   padding: 0.8rem 1.25rem;
-  border-bottom: 1px solid #e3dcd0;
-  background: rgba(255, 252, 247, 0.86);
+  border-bottom: 1px solid rgba(215, 235, 225, 0.12);
+  background: rgba(18, 26, 23, 0.88);
 }
 .brand {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  color: #1e2832;
+  color: #f3f7f4;
   font-size: 1.35rem;
   letter-spacing: -0.03em;
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none;
 }
 .brand::before {
@@ -37,42 +49,42 @@ header {
   height: 28px;
   flex: none;
   border-radius: 8px;
-  background: #2f6b4a url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 16'%3E%3Cpath fill='%23e8f6ee' d='M9 1l2.2 5H6.8z'/%3E%3Crect fill='%23d7ecdf' x='4' y='7' width='10' height='7' rx='1'/%3E%3C/svg%3E") center / 16px 14px no-repeat;
+  background: #2f6b4a url("/favicon.svg") center / cover no-repeat;
 }
-.brand b { font-weight: 700; }
-.brand span { color: #6b7280; font-weight: 500; }
+.brand b { font-weight: 800; }
+.brand span { color: #a9bdb3; font-weight: 600; }
 nav { display: flex; flex-wrap: wrap; gap: 0.15rem; align-items: center; }
 nav a {
-  color: #3d4754;
+  color: #d5e4dc;
   text-decoration: none;
   font-size: 0.97rem;
-  font-weight: 500;
+  font-weight: 600;
   padding: 0.45rem 0.75rem;
   border-radius: 999px;
 }
-nav a:hover { background: #f3eee6; }
+nav a:hover { background: rgba(47, 107, 74, 0.35); }
 nav a.active,
-nav a[aria-current="page"] { color: #1f5c3e; background: #e5f2ea; }
+nav a[aria-current="page"] { color: #f4fbf7; background: #2f6b4a; }
 main {
   width: min(1080px, calc(100% - 2.5rem));
   margin: 0 auto;
   padding: 3rem 0 4rem;
 }
 h1, h2 {
-  font-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  color: #1a2420;
+  font-family: "Nunito", "Segoe UI", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #f4f8f5;
 }
 h1 { margin: 0 0 1.75rem; font-size: clamp(2rem, 4vw, 2.5rem); }
 h2 { margin: 0 0 0.65rem; font-size: 1.85rem; }
 .grid { display: grid; gap: 1.25rem; }
 .card {
-  background: #fffcf8;
-  border: 1px solid #e6dfd3;
+  background: #1c2823;
+  border: 1px solid rgba(215, 235, 225, 0.12);
   border-radius: 18px;
   padding: 1.35rem 1.5rem 1.1rem;
-  box-shadow: 0 10px 30px rgba(60, 48, 28, 0.04);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
 }
 .card-top {
   display: flex;
@@ -86,34 +98,34 @@ h2 { margin: 0 0 0.65rem; font-size: 1.85rem; }
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-size: 0.78rem;
-  color: #6d6458;
-  font-weight: 600;
+  color: #a9bdb3;
+  font-weight: 700;
 }
 .live {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
   margin: 0;
-  color: #2a6a48;
+  color: #8fceb0;
   font-size: 0.82rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 .dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #2f9d62;
-  box-shadow: 0 0 0 4px #e4f6eb;
+  background: #2f6b4a;
+  box-shadow: 0 0 0 4px rgba(47, 107, 74, 0.28);
 }
 .pill {
   display: inline-block;
   margin: 0 0 0.4rem;
   padding: 0.25rem 0.65rem;
   border-radius: 999px;
-  background: #f3eee6;
-  color: #4e463c;
+  background: #24332d;
+  color: #d5e4dc;
   font-size: 0.82rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 .quest {
   display: flex;
@@ -121,13 +133,13 @@ h2 { margin: 0 0 0.65rem; font-size: 1.85rem; }
   align-items: baseline;
   gap: 1rem;
   padding: 0.7rem 0;
-  border-top: 1px solid #efe8dc;
+  border-top: 1px solid rgba(215, 235, 225, 0.1);
   font-size: 1rem;
 }
 .quest b {
-  font-weight: 600;
+  font-weight: 700;
   font-variant-numeric: tabular-nums;
-  color: #2a6a48;
+  color: #8fceb0;
   font-size: 0.88rem;
 }
 .rows { list-style: none; margin: 0.35rem 0 0; padding: 0; }
@@ -139,24 +151,24 @@ h2 { margin: 0 0 0.65rem; font-size: 1.85rem; }
   padding: 0.75rem 0.65rem;
   border-radius: 12px;
 }
-.row.top { background: #f3f8f4; }
+.row.top { background: rgba(47, 107, 74, 0.28); }
 .rank {
   width: 28px;
   height: 28px;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: #f1ebe3;
-  color: #5c5348;
+  background: #24332d;
+  color: #d5e4dc;
   font-size: 0.82rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 .row.top .rank { background: #2f6b4a; color: #f4fbf7; }
-.name { font-size: 1.03rem; font-weight: 600; }
+.name { font-size: 1.03rem; font-weight: 700; }
 .score {
   font-size: 0.82rem;
-  font-weight: 600;
-  color: #6a6258;
+  font-weight: 700;
+  color: #a9bdb3;
   font-variant-numeric: tabular-nums;
 }
 .note, main > p {
@@ -164,17 +176,17 @@ h2 { margin: 0 0 0.65rem; font-size: 1.85rem; }
   max-width: 42rem;
   font-size: 1.05rem;
   line-height: 1.55;
-  color: #2c3540;
+  color: #d5e4dc;
 }
-.note a, main a { color: #1f5c3e; font-weight: 600; }
+.note a, main a { color: #2f6b4a; font-weight: 700; }
 .blurb, .fallback {
   margin: 0.15rem 0 0.35rem;
-  color: #5c6672;
+  color: #a9bdb3;
   font-size: 0.98rem;
   line-height: 1.5;
 }
-.blurb { color: #3d4754; }
-main ul { margin: 0; padding-left: 1.2rem; max-width: 40rem; line-height: 1.6; color: #2c3540; }
+.blurb { color: #d5e4dc; }
+main ul { margin: 0; padding-left: 1.2rem; max-width: 40rem; line-height: 1.6; color: #d5e4dc; }
 main li { margin: 0.45rem 0; }
 @media (min-width: 800px) {
   header { padding: 0 4.5rem; }
