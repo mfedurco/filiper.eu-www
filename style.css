@@ -102,6 +102,19 @@ main.sheet p,
 main.sheet li,
 main.sheet ul { color: #24312b; }
 main.sheet a { color: #2f6b4a; }
+main > p.invite { margin: 0 0 1.35rem; max-width: 40rem; }
+main > h1 + p.invite { margin-top: -0.85rem; }
+main.sheet pre {
+  margin: 0.45rem 0 1rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 10px;
+  background: #d5e4d8;
+  color: #14201b;
+  font-family: "Cascadia Mono", ui-monospace, monospace;
+  font-size: 0.95rem;
+  overflow-x: auto;
+}
+main.sheet h2 { margin-top: 1.35rem; font-size: 1.35rem; }
 h2 { margin: 0 0 0.65rem; font-size: 1.85rem; }
 .grid { display: grid; gap: 1.25rem; }
 .card {
