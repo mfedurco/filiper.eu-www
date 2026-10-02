@@ -92,7 +92,17 @@
           rank += 1;
           var row = el("li", rank === 1 ? "row top" : "row");
           row.append(el("span", "rank", String(rank)));
-          row.append(el("span", "name", entry.player));
+          var nameEl = el("span", "name");
+          var uuid = entry.uuid;
+          if (typeof uuid === "string" && uuid.trim()) {
+            var profile = document.createElement("a");
+            profile.href = "https://vyprava.filiper.eu/hrac/" + SERVER_ID + "/" + encodeURIComponent(uuid.trim());
+            profile.textContent = entry.player;
+            nameEl.append(profile);
+          } else {
+            nameEl.textContent = entry.player;
+          }
+          row.append(nameEl);
           var points = entry.points;
           row.append(el("span", "score", points == null || points === "" ? "0" : String(points)));
           list.append(row);

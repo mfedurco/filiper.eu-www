@@ -231,6 +231,7 @@ h2 { margin: 0 0 0.65rem; font-size: 1.85rem; }
 }
 .row.top .rank { background: #2f6b4a; color: #f4fbf7; }
 .name { font-size: 1.03rem; font-weight: 700; }
+.row .name a { color: inherit; font-weight: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.15em; }
 .score {
   font-size: 0.82rem;
   font-weight: 700;
